@@ -19,14 +19,14 @@ public class BookingService {
     private final BookingRepository bookingRepository;
     private final BookingMapper mapper;
 
-    public void saveBooking(BookingCreateDto dto) {
+    public void createBooking(BookingCreateDto dto) {
         Booking booking = mapper.convertFromBookingCreateDto(dto);
         booking.setBooked(true);
         bookingRepository.save(booking);
     }
 
     public List<BookingDto> getBookingsByMonth(Month month) {
-        return mapper.convertToBookingDto(bookingRepository.getBookingsByMonth(month));
+        return mapper.convertToBookingDto(bookingRepository.findBookingsByMonth(month));
     }
 
     public BookingCountDto getCountOfBookedDaysInMonth(Month month) {

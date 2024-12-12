@@ -18,8 +18,8 @@ public class BookingRepository {
         storage.save(booking);
     }
 
-    public List<Booking> getBookingsByMonth(Month month) {
-        return storage.getBookingsByMonth(month);
+    public List<Booking> findBookingsByMonth(Month month) {
+        return storage.findBookingsByMonth(month);
     }
 
     public Long getCountOfBookedDaysInMonth(Month month) {

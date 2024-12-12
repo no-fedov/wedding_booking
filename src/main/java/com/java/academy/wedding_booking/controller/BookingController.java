@@ -1,8 +1,8 @@
 package com.java.academy.wedding_booking.controller;
 
 import com.java.academy.wedding_booking.dto.BookingCountDto;
+import com.java.academy.wedding_booking.dto.BookingCreateDto;
 import com.java.academy.wedding_booking.dto.BookingDto;
-import com.java.academy.wedding_booking.mapper.BookingMapper;
 import com.java.academy.wedding_booking.service.BookingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.java.academy.wedding_booking.dto.BookingCreateDto;
 
 import java.time.Month;
 import java.util.List;
@@ -28,12 +26,12 @@ public class BookingController {
 
     @PostMapping
     public void saveBooking(@RequestBody BookingCreateDto dto) {
-        bookingService.saveBooking(dto);
+        bookingService.createBooking(dto);
     }
 
     @GetMapping("/month/{monthNumber}")
     public List<BookingDto> getBookingsBuMonth(@PathVariable Integer monthNumber) {
-       return bookingService.getBookingsByMonth(Month.of(monthNumber));
+        return bookingService.getBookingsByMonth(Month.of(monthNumber));
     }
 
 
