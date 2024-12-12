@@ -10,19 +10,23 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class BookingRepository {
+public class BookingRepository implements BookingRepositoryIF {
 
     private final BookingStorage storage;
 
+    @Override
     public void save(Booking booking) {
         storage.save(booking);
     }
 
+    @Override
     public List<Booking> findBookingsByMonth(Month month) {
         return storage.findBookingsByMonth(month);
     }
 
-    public Long getCountOfBookedDaysInMonth(Month month) {
+    @Override
+    public Long findCountOfBookedDaysInMonth(Month month) {
         return storage.getCountOfBookedDaysInMonth(month);
     }
+
 }

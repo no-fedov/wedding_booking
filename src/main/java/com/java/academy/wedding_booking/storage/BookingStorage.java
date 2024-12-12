@@ -52,4 +52,5 @@ public class BookingStorage {
 
         return 0L;
     }
+
 }

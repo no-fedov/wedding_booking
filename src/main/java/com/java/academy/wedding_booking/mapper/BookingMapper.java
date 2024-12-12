@@ -31,4 +31,5 @@ public class BookingMapper {
                 .filter(Objects::nonNull)
                 .map(this::convertToBookingDto).toList();
     }
+
 }

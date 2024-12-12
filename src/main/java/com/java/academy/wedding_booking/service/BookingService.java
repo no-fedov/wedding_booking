@@ -5,7 +5,7 @@ import com.java.academy.wedding_booking.dto.BookingCreateDto;
 import com.java.academy.wedding_booking.dto.BookingDto;
 import com.java.academy.wedding_booking.entity.Booking;
 import com.java.academy.wedding_booking.mapper.BookingMapper;
-import com.java.academy.wedding_booking.repository.BookingRepository;
+import com.java.academy.wedding_booking.repository.BookingRepositoryIF;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -14,9 +14,9 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class BookingService {
+public class BookingService implements BookingServiceIF {
 
-    private final BookingRepository bookingRepository;
+    private final BookingRepositoryIF bookingRepository;
     private final BookingMapper mapper;
 
     public void createBooking(BookingCreateDto dto) {
@@ -30,6 +30,7 @@ public class BookingService {
     }
 
     public BookingCountDto getCountOfBookedDaysInMonth(Month month) {
-        return new BookingCountDto(bookingRepository.getCountOfBookedDaysInMonth(month));
+        return new BookingCountDto(bookingRepository.findCountOfBookedDaysInMonth(month));
     }
+
 }
